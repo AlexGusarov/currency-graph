@@ -10,16 +10,24 @@ const CurrencySelector: React.FC<CurrencySelectorProps> = ({
   selectedCurrencies,
   onCurrencyChange,
 }) => {
+  // Объект для отображения кодов валют на полные названия
+  const currencyNames: Record<CurrencyCode, string> = {
+    usd: 'Доллар',
+    eur: 'Евро',
+    cny: 'Юань',
+  };
+
   return (
-    <div>
+    <div className="flex flex-col">
       {Object.keys(selectedCurrencies).map((currency) => (
-        <label key={currency}>
+        <label key={currency} className="cursor-pointer p-1">
           <input
             type="checkbox"
+            className="mr-2"
             onChange={() => onCurrencyChange(currency as CurrencyCode)}
             checked={selectedCurrencies[currency as CurrencyCode]}
-          />{' '}
-          {currency}
+          />
+          {currencyNames[currency as CurrencyCode]}
         </label>
       ))}
     </div>

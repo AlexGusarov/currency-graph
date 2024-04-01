@@ -26,18 +26,18 @@ const DateSelector: React.FC<DateSelectorProps> = ({
   };
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex flex-col">
       <input
         type="date"
         value={startDate ? startDate.toISOString().split('T')[0] : ''}
         onChange={handleStartDateChange}
-        className="input input-bordered w-full max-w-xs px-3 py-2 border-2 border-gray-300 focus:border-blue-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        className="input input-bordered w-[150px] max-w-xs px-3 py-2 border-2 border-gray-300 focus:border-blue-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
       />
       <input
         type="date"
         value={endDate ? endDate.toISOString().split('T')[0] : ''}
         onChange={handleEndDateChange}
-        className="input input-bordered w-full max-w-xs px-3 py-2 border-2 border-gray-300 focus:border-blue-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        className="input input-bordered w-[150px] max-w-xs px-3 py-2 border-2 border-gray-300 focus:border-blue-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
       />
     </div>
   );

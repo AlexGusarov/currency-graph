@@ -29,7 +29,7 @@ interface ChartDeskProps {
 
 const ChartDesk: React.FC<ChartDeskProps> = ({ chartData, chartOptions }) => {
   return (
-    <div className="w-[600px] h-[400px]">
+    <div className="w-[600px] h-[500px]">
       <Line data={chartData} options={chartOptions} />
     </div>
   );

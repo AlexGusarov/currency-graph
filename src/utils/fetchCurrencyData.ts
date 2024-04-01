@@ -10,6 +10,11 @@ const fetchCurrencyData = async (
 
   const formatDate = (date: Date): string => date.toISOString().split('T')[0];
 
+  const formatLabel = (isoDate: string): string => {
+    const [year, month, day] = isoDate.split('-');
+    return `${day}-${month}-${year}`;
+  };
+
   for (
     let date = new Date(startDate);
     date <= endDate;
@@ -22,7 +27,7 @@ const fetchCurrencyData = async (
       const response = await fetch(apiUrl);
       if (!response.ok) throw new Error('Failed to fetch currency data');
       const data = await response.json();
-      labels.push(formattedDate);
+      labels.push(formatLabel(formattedDate));
       values.push(data[currencyCode]['rub']);
     } catch (error) {
       console.error(
