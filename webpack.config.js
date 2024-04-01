@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -20,7 +21,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader'],
-        exclude: /node_modules/,
       },
     ],
   },
@@ -30,8 +30,11 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
     compress: true,
     port: 3000,
+    hot: true,
   },
 };
