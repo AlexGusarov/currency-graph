@@ -7,6 +7,7 @@ import fetchCurrencyData from '../utils/getCurrencyData';
 import getCurrenciesData from '../utils/getCurrenciesData';
 import { ChartData, ChartOptions } from 'chart.js';
 import { SelectedCurrencies, CurrencyCode } from '../types';
+import { getMinMax } from '../utils/getMinMax';
 
 const App: React.FC = () => {
   const today = new Date();
@@ -55,7 +56,7 @@ const App: React.FC = () => {
     ],
   });
 
-  const chartOptions: ChartOptions<'line'> = {
+  const [chartOptions, setChartOptions] = useState<ChartOptions<'line'>>({
     scales: {
       y: {
         beginAtZero: true,
@@ -67,21 +68,40 @@ const App: React.FC = () => {
       },
     },
     maintainAspectRatio: false,
-  };
+  });
 
   useEffect(() => {
-    // Проверяем, выбрана ли хотя бы одна валюта
     const anyCurrencySelected = Object.values(selectedCurrencies).some(
       (isSelected) => isSelected,
     );
 
     if (anyCurrencySelected && dates[0] && dates[1]) {
-      // Используем getCurrenciesData для получения данных по всем выбранным валютам
       getCurrenciesData(selectedCurrencies, dates as [Date, Date]).then(
         (data) => {
-          setChartData(data); // Предполагая, что data уже в правильном формате
+          const { min, max } = getMinMax(data.datasets);
+          setChartData(data);
+
+          setChartOptions((prevOptions) => {
+            return {
+              ...prevOptions,
+              scales: {
+                ...prevOptions.scales,
+                y: {
+                  ...prevOptions.scales.y,
+                  suggestedMin: min,
+                  suggestedMax: max,
+                  beginAtZero: min <= 0, // Добавляем предложенный максимум
+                },
+              },
+            };
+          });
         },
       );
+    } else {
+      setChartData({
+        labels: [],
+        datasets: [],
+      });
     }
   }, [selectedCurrencies, dates]);
 

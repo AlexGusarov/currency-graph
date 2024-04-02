@@ -7,13 +7,30 @@ export type CurrencyColors = {
   };
 };
 
-export interface SelectedCurrencies {
+export type SelectedCurrencies = {
   usd: boolean;
   eur: boolean;
   cny: boolean;
-}
+};
 
-export interface FetchCurrencyDataResult {
+export type FetchCurrencyDataResult = {
   labels: string[];
   values: number[];
-}
+};
+
+export type CurrencyDataResult = {
+  labels: string[];
+  values: number[];
+};
+
+export type ChartDataset = {
+  label: string;
+  data: number[];
+  borderColor: string;
+  backgroundColor: string;
+};
+
+export type CurrenciesDataResult = {
+  labels: string[];
+  datasets: ChartDataset[];
+};
