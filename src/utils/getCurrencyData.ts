@@ -1,7 +1,6 @@
-// fetchCurrencyData.ts
 import { FetchCurrencyDataResult } from '../types';
 
-const fetchCurrencyData = async (
+const getCurrencyData = async (
   currencyCode: string,
   [startDate, endDate]: [Date, Date],
 ): Promise<FetchCurrencyDataResult> => {
@@ -42,4 +41,4 @@ const fetchCurrencyData = async (
   return { labels, values };
 };
 
-export default fetchCurrencyData;
+export default getCurrencyData;
