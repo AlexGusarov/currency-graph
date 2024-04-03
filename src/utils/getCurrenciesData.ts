@@ -12,13 +12,18 @@ const isCurrencyCode = (code: any): code is CurrencyCode =>
 const getCurrenciesData = async (
   selectedCurrencies: SelectedCurrencies,
   dates: [Date, Date],
+  onRequest?: () => void,
 ): Promise<CurrenciesDataResult> => {
   const results = await Promise.all(
     Object.entries(selectedCurrencies)
       .filter(([_, isSelected]) => isSelected)
       .map(async ([currencyCode]) => {
         if (isCurrencyCode(currencyCode)) {
-          const { labels, values } = await getCurrencyData(currencyCode, dates);
+          const { labels, values } = await getCurrencyData(
+            currencyCode,
+            dates,
+            onRequest,
+          );
           const color = currencyColors[currencyCode];
           return {
             labels,

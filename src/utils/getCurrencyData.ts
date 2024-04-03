@@ -3,6 +3,7 @@ import { FetchCurrencyDataResult } from '../types';
 const getCurrencyData = async (
   currencyCode: string,
   [startDate, endDate]: [Date, Date],
+  onRequest?: () => void,
 ): Promise<FetchCurrencyDataResult> => {
   let labels: string[] = [];
   let values: number[] = [];
@@ -28,6 +29,7 @@ const getCurrencyData = async (
       const data = await response.json();
       labels.push(formatLabel(formattedDate));
       values.push(data[currencyCode]['rub']);
+      if (onRequest) onRequest();
     } catch (error) {
       console.error(
         'Error fetching currency data for date',

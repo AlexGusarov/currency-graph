@@ -24,6 +24,8 @@ const App: React.FC = () => {
     lastWeekStart.getDate() + 6,
   );
 
+  const [requestCount, setRequestCount] = useState(0);
+
   const [selectedCurrencies, setSelectedCurrencies] =
     useState<SelectedCurrencies>({
       usd: false,
@@ -76,27 +78,27 @@ const App: React.FC = () => {
     );
 
     if (anyCurrencySelected && dates[0] && dates[1]) {
-      getCurrenciesData(selectedCurrencies, dates as [Date, Date]).then(
-        (data) => {
-          const { min, max } = getMinMax(data.datasets);
-          setChartData(data);
+      getCurrenciesData(selectedCurrencies, dates as [Date, Date], () =>
+        setRequestCount((count) => count + 1),
+      ).then((data) => {
+        const { min, max } = getMinMax(data.datasets);
+        setChartData(data);
 
-          setChartOptions((prevOptions) => {
-            return {
-              ...prevOptions,
-              scales: {
-                ...prevOptions.scales,
-                y: {
-                  ...prevOptions.scales.y,
-                  suggestedMin: min,
-                  suggestedMax: max,
-                  beginAtZero: min <= 0, // Добавляем предложенный максимум
-                },
+        setChartOptions((prevOptions) => {
+          return {
+            ...prevOptions,
+            scales: {
+              ...prevOptions.scales,
+              y: {
+                ...prevOptions.scales.y,
+                suggestedMin: min,
+                suggestedMax: max,
+                beginAtZero: min <= 0, // Добавляем предложенный максимум
               },
-            };
-          });
-        },
-      );
+            },
+          };
+        });
+      });
     } else {
       setChartData({
         labels: [],
@@ -137,6 +139,7 @@ const App: React.FC = () => {
             <ChartDesk chartData={chartData} chartOptions={chartOptions} />
           </div>
         </div>
+        <p>Число запросов к API: {requestCount}</p>
       </main>
     </div>
   );
