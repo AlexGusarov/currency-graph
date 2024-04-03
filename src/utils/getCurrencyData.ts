@@ -5,15 +5,23 @@ const getCurrencyData = async (
   [startDate, endDate]: [Date, Date],
   onRequest?: () => void,
 ): Promise<FetchCurrencyDataResult> => {
-  let labels: string[] = [];
-  let values: number[] = [];
-
   const formatDate = (date: Date): string => date.toISOString().split('T')[0];
 
   const formatLabel = (isoDate: string): string => {
     const [year, month, day] = isoDate.split('-');
     return `${day}-${month}-${year}`;
   };
+
+  const cacheKey = `currencyData-${currencyCode}-${formatDate(startDate)}-to-${formatDate(endDate)}`;
+  const cachedData = localStorage.getItem(cacheKey);
+
+  // Если в кэше есть данные для этого запроса, возвращаем их
+  if (cachedData) {
+    return JSON.parse(cachedData);
+  }
+
+  let labels: string[] = [];
+  let values: number[] = [];
 
   for (
     let date = new Date(startDate);
@@ -29,7 +37,7 @@ const getCurrencyData = async (
       const data = await response.json();
       labels.push(formatLabel(formattedDate));
       values.push(data[currencyCode]['rub']);
-      if (onRequest) onRequest();
+      onRequest?.();
     } catch (error) {
       console.error(
         'Error fetching currency data for date',
@@ -40,7 +48,11 @@ const getCurrencyData = async (
     }
   }
 
-  return { labels, values };
+  // Кэширование полученных данных
+  const result: FetchCurrencyDataResult = { labels, values };
+  localStorage.setItem(cacheKey, JSON.stringify(result));
+
+  return result;
 };
 
 export default getCurrencyData;
