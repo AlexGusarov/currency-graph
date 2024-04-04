@@ -1,9 +1,7 @@
-// App.tsx
 import React, { useState, useEffect } from 'react';
 import CurrencySelector from './CurrencySelector';
 import DateSelector from './DateSelector';
 import ChartDesk from './ChartDesk';
-import fetchCurrencyData from '../utils/getCurrencyData';
 import getCurrenciesData from '../utils/getCurrenciesData';
 import { ChartData, ChartOptions } from 'chart.js';
 import { SelectedCurrencies, CurrencyCode } from '../types';
@@ -69,7 +67,8 @@ const App: React.FC = () => {
         display: true,
       },
     },
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
+    responsive: true,
   });
 
   useEffect(() => {
@@ -93,7 +92,7 @@ const App: React.FC = () => {
                 ...prevOptions.scales.y,
                 suggestedMin: min,
                 suggestedMax: max,
-                beginAtZero: min <= 0, // Добавляем предложенный максимум
+                beginAtZero: min <= 0,
               },
             },
           };
@@ -119,12 +118,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-white m-0 p-0">
-      <main className="max-w-[1280px] mx-auto flex flex-col justify-center items-center font-sans py-[50px] px-[40px] box-border">
+    <div className="w-full h-screen bg-white m-0 p-0 flex flex-col">
+      <main className="flex-1 max-w-[1280px] mx-auto flex flex-col justify-center items-center font-sans py-[50px] px-[40px] box-border">
         <div className="w-auto h-auto border border-gray-300 rounded-xl p-8 shadow-lg">
           <h1 className="text-3xl font-bold mb-8 text-center">Курсограф</h1>
-          <div className="flex gap-[40px]">
-            <div className="flex flex-col justify-around">
+          <div className="flex flex-col md:flex-row gap-[40px]">
+            <div className="flex md:flex-col justify-around">
               <CurrencySelector
                 selectedCurrencies={selectedCurrencies}
                 onCurrencyChange={handleCurrencyChange}
@@ -138,8 +137,10 @@ const App: React.FC = () => {
 
             <ChartDesk chartData={chartData} chartOptions={chartOptions} />
           </div>
+          <p className="mt-6 text-gray-700 text-sm text-center">
+            Число запросов к API: {requestCount}
+          </p>
         </div>
-        <p>Число запросов к API: {requestCount}</p>
       </main>
     </div>
   );

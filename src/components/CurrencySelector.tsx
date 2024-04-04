@@ -18,7 +18,7 @@ const CurrencySelector: React.FC<CurrencySelectorProps> = ({
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col justify-around md:justify-start">
       {Object.keys(selectedCurrencies).map((currency) => (
         <label key={currency} className="cursor-pointer p-1">
           <input

@@ -46,16 +46,15 @@ const DateSelector: React.FC<DateSelectorProps> = ({
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
-    // Если подсказка показана, установим таймер для её скрытия
+
     if (showTooltip) {
       timer = setTimeout(() => {
-        setShowTooltip(false); // Скрываем подсказку напрямую
-      }, 3000); // Подсказка будет скрыта через 3 секунды
+        setShowTooltip(false);
+      }, 3000);
     }
 
-    // Очистка таймера при размонтировании компонента
     return () => clearTimeout(timer);
-  }, [showTooltip]); // Эффект запускается каждый раз при изменении showTooltip
+  }, [showTooltip]);
 
   return (
     <div className="flex flex-col space-y-4 relative">
