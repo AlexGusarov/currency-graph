@@ -15,7 +15,6 @@ const getCurrencyData = async (
   const cacheKey = `currencyData-${currencyCode}-${formatDate(startDate)}-to-${formatDate(endDate)}`;
   const cachedData = localStorage.getItem(cacheKey);
 
-  // Если в кэше есть данные для этого запроса, возвращаем их
   if (cachedData) {
     return JSON.parse(cachedData);
   }
@@ -48,7 +47,6 @@ const getCurrencyData = async (
     }
   }
 
-  // Кэширование полученных данных
   const result: FetchCurrencyDataResult = { labels, values };
   localStorage.setItem(cacheKey, JSON.stringify(result));
 

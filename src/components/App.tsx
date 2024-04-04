@@ -1,27 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { ChartData, ChartOptions } from 'chart.js';
+import { SelectedCurrencies, CurrencyCode } from '../types';
 import CurrencySelector from './CurrencySelector';
 import DateSelector from './DateSelector';
 import ChartDesk from './ChartDesk';
 import getCurrenciesData from '../utils/getCurrenciesData';
-import { ChartData, ChartOptions } from 'chart.js';
-import { SelectedCurrencies, CurrencyCode } from '../types';
 import { getMinMax } from '../utils/getMinMax';
+import useLastWeekRange from '../hooks/useLastWeekRange';
 
 const App: React.FC = () => {
-  const today = new Date();
-  const dayOfWeek = today.getDay();
-  const diffToLastMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-  const lastWeekStart = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - diffToLastMonday - 6,
-  );
-  const lastWeekEnd = new Date(
-    lastWeekStart.getFullYear(),
-    lastWeekStart.getMonth(),
-    lastWeekStart.getDate() + 6,
-  );
-
+  const [lastWeekStart, lastWeekEnd] = useLastWeekRange();
   const [requestCount, setRequestCount] = useState(0);
 
   const [selectedCurrencies, setSelectedCurrencies] =
