@@ -3,7 +3,7 @@
 ## Описание
 Приложение с актуальными графиками курсов к рублю доллара, евро и юаня. 
 
-Доступно для работы [здесь](https://currancy-graph.netlify.app/).
+Доступно для работы [здесь](https://c-graph.netlify.app/).
 
 ## Технологии
 **React, TypeScript, Chart.js, Jest, Testing Library**
