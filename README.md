@@ -1,41 +1,39 @@
 # Currency-graph
 
-## Описание
-Приложение с актуальными графиками курсов к рублю доллара, евро и юаня. 
+## Description
+An application with up-to-date charts of exchange rates to the ruble, dollar, euro and yuan 
 
-Доступно для работы [здесь](https://c-graph.netlify.app/).
+Available for work [here] https://graph no.netlify.app/).
 
-## Технологии
+## Technology
 **React, TypeScript, Chart.js, Jest, Testing Library**
 
 ## API
-Используется [этот апи](https://github.com/fawazahmed0/exchange-api). У него есть определенные ограничения - показывает данные только со 2 марта этого года. 
+[This api is used](https://github.com/fawazahmed0/exchange-api ). It has no specific restrictions - it shows data only from March 2 of this year. 
 
-Для оптимизации запросов реализовано кэширование в localStorage. 
+Caching in localStorage is implemented to optimize downloads. 
 
-## Установка и запуск
-Чтобы запустить проект локально:
+## Installation and launch
+To run the project locally:
 
-1. Склонируйте репозиторий:
+1. Copy the repository:
 
    ```
    git clone https://github.com/AlexGusarov/currency-graph.git
    ```
-2. Перейдите в директорию проекта:
+2. Go to the project directory:
 
    ```
    cd currency-graph
    ```
-3. Установите зависимости:
+3. Set the settings:
 
    ```
    npm install
    ```
-4. Запустите проект:
+4. Launch the project:
 
    ```
    npm start
    ```
-5. Откройте [http://localhost:3000](http://localhost:3000) для просмотра в браузере.
-
-
+5. Open the http://localhost:3000-да . http://localhost:3000 ) for viewing in the browser.
