@@ -36,4 +36,4 @@ To run the project locally:
    ```
    npm start
    ```
-5. Open the http://localhost:3000-да . http://localhost:3000 ) for viewing in the browser.
+5. Open the [http://localhost:3000](http://localhost:3000) for viewing in the browser.
