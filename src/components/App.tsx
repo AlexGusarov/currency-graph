@@ -26,17 +26,17 @@ const App: React.FC = () => {
 
   const [chartData, setChartData] = useState<ChartData<'line'>>({
     labels: [
-      'Понедельник',
-      'Вторник',
-      'Среда',
-      'Четверг',
-      'Пятница',
-      'Суббота',
-      'Воскресенье',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
     ],
     datasets: [
       {
-        label: 'Данные не загружены',
+        label: 'The data has not been uploaded',
         data: [],
         borderColor: 'rgb(75, 192, 192)',
         backgroundColor: 'rgba(75, 192, 192, 0.5)',
@@ -125,9 +125,9 @@ const App: React.FC = () => {
 
             <ChartDesk chartData={chartData} chartOptions={chartOptions} />
           </div>
-          <p className="mt-6 text-gray-700 text-sm text-center">
+{/*           <p className="mt-6 text-gray-700 text-sm text-center">
             Число запросов к API: {requestCount}
-          </p>
+          </p> */}
         </div>
       </main>
     </div>
