@@ -109,7 +109,7 @@ const App: React.FC = () => {
     <div className="w-full h-screen bg-white m-0 p-0 flex flex-col">
       <main className="flex-1 max-w-[1280px] mx-auto flex flex-col justify-center items-center font-sans py-[50px] px-[40px] box-border">
         <div className="w-auto h-auto border border-gray-300 rounded-xl p-8 shadow-lg">
-          <h1 className="text-3xl font-bold mb-8 text-center">Курсограф</h1>
+          <h1 className="text-3xl font-bold mb-8 text-center">CurrencyGraph</h1>
           <div className="flex flex-col md:flex-row gap-[40px]">
             <div className="flex md:flex-col justify-around">
               <CurrencySelector
