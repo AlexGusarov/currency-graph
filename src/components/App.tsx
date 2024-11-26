@@ -125,8 +125,8 @@ const App: React.FC = () => {
 
             <ChartDesk chartData={chartData} chartOptions={chartOptions} />
           </div>
-{/*           <p className="mt-6 text-gray-700 text-sm text-center">
-            Число запросов к API: {requestCount}
+          {/*           <p className="mt-6 text-gray-700 text-sm text-center">
+            Number of API requests: {requestCount}
           </p> */}
         </div>
       </main>

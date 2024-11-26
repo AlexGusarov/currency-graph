@@ -28,7 +28,7 @@ const getCurrenciesData = async (
           return {
             labels,
             dataset: {
-              label: `Курс ${currencyCode.toUpperCase()} к RUB`,
+              label: `Сourse ${currencyCode.toUpperCase()} to RUB`,
               data: values,
               borderColor: color.borderColor,
               backgroundColor: color.backgroundColor,

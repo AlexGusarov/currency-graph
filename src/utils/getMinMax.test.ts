@@ -2,13 +2,13 @@ import { getMinMax } from './getMinMax';
 import { ChartDataset } from '../types';
 
 describe('getMinMax function', () => {
-  test('возвращает бесконечность для пустого датасета', () => {
+  test('returns infinity for an empty dataset', () => {
     const result = getMinMax([]);
     expect(result.min).toBe(Infinity);
     expect(result.max).toBe(-Infinity);
   });
 
-  test('возвращает min и max для одного датасета', () => {
+  test('returns min and max for the same dataset', () => {
     const datasets: ChartDataset[] = [
       {
         label: 'Dataset 1',
@@ -22,7 +22,7 @@ describe('getMinMax function', () => {
     expect(result.max).toBe(10);
   });
 
-  test('возвращает min и max для нескольких датасетов', () => {
+  test('returns min and max for multiple datasets', () => {
     const datasets: ChartDataset[] = [
       {
         label: 'Dataset 1',
