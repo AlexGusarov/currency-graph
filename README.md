@@ -9,7 +9,7 @@ Available for work [here](https://c-graph.netlify.app).
 **React, TypeScript, Chart.js, Jest, Testing Library**
 
 ## API
-[This api is used](https://github.com/fawazahmed0/exchange-api). It has no specific restrictions - it shows data only from March 2 of this year. 
+[This api is used](https://github.com/fawazahmed0/exchange-api). It has some specific restrictions - it shows data only from March 2 of 2023 year. 
 
 Caching in localStorage is implemented to optimize downloads. 
 
