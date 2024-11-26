@@ -6,7 +6,7 @@ An application with up-to-date charts of exchange rates to the ruble, dollar, eu
 Available for work [here](https://c-graph.netlify.app).
 
 ## Technology
-**React, TypeScript, Chart.js, Jest, Testing Library**
+**React, TypeScript, Chart.js, Tailwind CSS, Jest, Testing Library**
 
 ## API
 [This api is used](https://github.com/fawazahmed0/exchange-api). It has some specific restrictions - it shows data only from March 2 of 2023 year. 
