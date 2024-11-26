@@ -61,7 +61,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({
       {showTooltip && (
         <div className="absolute -top-[25px] -right-[150px] w-[250px] bg-white border border-gray-400 shadow-lg rounded-md p-2">
           <p className="text-sm text-gray-700">
-            Данные доступны только с {minDateStr}
+            The data is only available from {minDateStr}
           </p>
         </div>
       )}
@@ -70,7 +70,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({
           htmlFor="startDate"
           className="block text-sm font-medium text-gray-700"
         >
-          Дата с
+          Date from
         </label>
         <input
           id="startDate"
@@ -85,7 +85,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({
           htmlFor="endDate"
           className="block text-sm font-medium text-gray-700"
         >
-          Дата по
+          Date by
         </label>
         <input
           id="endDate"
