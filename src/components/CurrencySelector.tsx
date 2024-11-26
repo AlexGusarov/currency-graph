@@ -10,11 +10,10 @@ const CurrencySelector: React.FC<CurrencySelectorProps> = ({
   selectedCurrencies,
   onCurrencyChange,
 }) => {
-  // Объект для отображения кодов валют на полные названия
   const currencyNames: Record<CurrencyCode, string> = {
-    usd: 'Доллар',
-    eur: 'Евро',
-    cny: 'Юань',
+    usd: 'Dollar',
+    eur: 'Euro',
+    cny: 'Yuan',
   };
 
   return (
