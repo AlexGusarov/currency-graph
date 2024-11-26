@@ -3,7 +3,7 @@
 ## Description
 An application with up-to-date charts of exchange rates to the ruble, dollar, euro and yuan 
 
-Available for work [here] https://graph.netlify.app/).
+Available for work [here] (https://c-graph.netlify.app/).
 
 ## Technology
 **React, TypeScript, Chart.js, Jest, Testing Library**
